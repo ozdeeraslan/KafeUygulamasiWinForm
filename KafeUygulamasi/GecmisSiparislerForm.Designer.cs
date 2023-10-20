@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             splitContainer1 = new SplitContainer();
-            dgvSiparisler = new DataGridView();
             label1 = new Label();
+            dgvSiparisler = new DataGridView();
+            label3 = new Label();
             label2 = new Label();
             dgvSiparisDetaylar = new DataGridView();
-            label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -63,17 +63,6 @@
             splitContainer1.SplitterDistance = 386;
             splitContainer1.TabIndex = 0;
             // 
-            // dgvSiparisler
-            // 
-            dgvSiparisler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dgvSiparisler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSiparisler.Location = new Point(12, 36);
-            dgvSiparisler.Name = "dgvSiparisler";
-            dgvSiparisler.RowHeadersWidth = 51;
-            dgvSiparisler.RowTemplate.Height = 29;
-            dgvSiparisler.Size = new Size(776, 338);
-            dgvSiparisler.TabIndex = 0;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -83,6 +72,36 @@
             label1.Size = new Size(73, 20);
             label1.TabIndex = 1;
             label1.Text = "Siparisler";
+            // 
+            // dgvSiparisler
+            // 
+            dgvSiparisler.AllowUserToAddRows = false;
+            dgvSiparisler.AllowUserToDeleteRows = false;
+            dgvSiparisler.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSiparisler.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSiparisler.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dgvSiparisler.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSiparisler.Location = new Point(12, 36);
+            dgvSiparisler.MultiSelect = false;
+            dgvSiparisler.Name = "dgvSiparisler";
+            dgvSiparisler.ReadOnly = true;
+            dgvSiparisler.RowHeadersVisible = false;
+            dgvSiparisler.RowHeadersWidth = 51;
+            dgvSiparisler.RowTemplate.Height = 29;
+            dgvSiparisler.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvSiparisler.Size = new Size(776, 338);
+            dgvSiparisler.TabIndex = 0;
+            dgvSiparisler.SelectionChanged += dgvSiparisler_SelectionChanged;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(14, 11);
+            label3.Name = "label3";
+            label3.Size = new Size(122, 20);
+            label3.TabIndex = 2;
+            label3.Text = "Siparis Detaylari";
             // 
             // label2
             // 
@@ -95,24 +114,22 @@
             // 
             // dgvSiparisDetaylar
             // 
+            dgvSiparisDetaylar.AllowUserToAddRows = false;
+            dgvSiparisDetaylar.AllowUserToDeleteRows = false;
             dgvSiparisDetaylar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvSiparisDetaylar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvSiparisDetaylar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvSiparisDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSiparisDetaylar.Location = new Point(12, 34);
+            dgvSiparisDetaylar.MultiSelect = false;
             dgvSiparisDetaylar.Name = "dgvSiparisDetaylar";
+            dgvSiparisDetaylar.ReadOnly = true;
+            dgvSiparisDetaylar.RowHeadersVisible = false;
             dgvSiparisDetaylar.RowHeadersWidth = 51;
             dgvSiparisDetaylar.RowTemplate.Height = 29;
+            dgvSiparisDetaylar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvSiparisDetaylar.Size = new Size(776, 337);
             dgvSiparisDetaylar.TabIndex = 2;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label3.Location = new Point(14, 11);
-            label3.Name = "label3";
-            label3.Size = new Size(122, 20);
-            label3.TabIndex = 2;
-            label3.Text = "Siparis Detaylari";
             // 
             // GecmisSiparislerForm
             // 

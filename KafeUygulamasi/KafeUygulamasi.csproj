@@ -8,4 +8,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\KafeUygulamasi.Data\KafeUygulamasi.Data.csproj" />
+  </ItemGroup>
+
 </Project>

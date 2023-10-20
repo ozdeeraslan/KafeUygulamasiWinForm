@@ -28,11 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
-            cmbUrun = new ComboBox();
+            cboUrun = new ComboBox();
             btnDetayEkle = new Button();
             dgvDetaylar = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             nudAdet = new NumericUpDown();
             cnbMasaNo = new ComboBox();
             label3 = new Label();
@@ -63,34 +68,79 @@
             label2.TabIndex = 1;
             label2.Text = "Adet";
             // 
-            // cmbUrun
+            // cboUrun
             // 
-            cmbUrun.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbUrun.FormattingEnabled = true;
-            cmbUrun.Location = new Point(12, 59);
-            cmbUrun.Name = "cmbUrun";
-            cmbUrun.Size = new Size(151, 28);
-            cmbUrun.TabIndex = 2;
+            cboUrun.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboUrun.FormattingEnabled = true;
+            cboUrun.Location = new Point(12, 59);
+            cboUrun.Name = "cboUrun";
+            cboUrun.Size = new Size(151, 28);
+            cboUrun.TabIndex = 2;
             // 
             // btnDetayEkle
             // 
             btnDetayEkle.Location = new Point(293, 61);
             btnDetayEkle.Name = "btnDetayEkle";
-            btnDetayEkle.Size = new Size(73, 28);
+            btnDetayEkle.Size = new Size(139, 28);
             btnDetayEkle.TabIndex = 4;
             btnDetayEkle.Text = "EKLE";
             btnDetayEkle.UseVisualStyleBackColor = true;
+            btnDetayEkle.Click += btnDetayEkle_Click;
             // 
             // dgvDetaylar
             // 
+            dgvDetaylar.AllowUserToAddRows = false;
+            dgvDetaylar.AllowUserToDeleteRows = false;
             dgvDetaylar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDetaylar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetaylar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvDetaylar.Location = new Point(14, 106);
+            dgvDetaylar.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
+            dgvDetaylar.Location = new Point(12, 106);
+            dgvDetaylar.MultiSelect = false;
             dgvDetaylar.Name = "dgvDetaylar";
+            dgvDetaylar.ReadOnly = true;
+            dgvDetaylar.RowHeadersVisible = false;
             dgvDetaylar.RowHeadersWidth = 51;
             dgvDetaylar.RowTemplate.Height = 29;
-            dgvDetaylar.Size = new Size(355, 438);
+            dgvDetaylar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetaylar.Size = new Size(420, 438);
             dgvDetaylar.TabIndex = 5;
+            dgvDetaylar.KeyDown += dgvDetaylar_KeyDown;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "UrunAd";
+            Column1.HeaderText = "Ürün Ad";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "BirimFiyat";
+            dataGridViewCellStyle1.Format = "c2";
+            Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            Column2.HeaderText = "Birim Fiyat";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "Adet";
+            Column3.HeaderText = "Adet";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "TutarTL";
+            Column4.HeaderText = "Tutar";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // nudAdet
             // 
@@ -107,15 +157,15 @@
             cnbMasaNo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             cnbMasaNo.DropDownStyle = ComboBoxStyle.DropDownList;
             cnbMasaNo.FormattingEnabled = true;
-            cnbMasaNo.Location = new Point(408, 59);
+            cnbMasaNo.Location = new Point(438, 59);
             cnbMasaNo.Name = "cnbMasaNo";
-            cnbMasaNo.Size = new Size(151, 28);
+            cnbMasaNo.Size = new Size(121, 28);
             cnbMasaNo.TabIndex = 8;
             // 
             // label3
             // 
             label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label3.Location = new Point(408, 21);
+            label3.Location = new Point(440, 21);
             label3.Name = "label3";
             label3.Size = new Size(94, 25);
             label3.TabIndex = 7;
@@ -137,12 +187,13 @@
             btnSiparisIptal.BackColor = Color.Firebrick;
             btnSiparisIptal.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnSiparisIptal.ForeColor = Color.White;
-            btnSiparisIptal.Location = new Point(409, 396);
+            btnSiparisIptal.Location = new Point(438, 396);
             btnSiparisIptal.Name = "btnSiparisIptal";
-            btnSiparisIptal.Size = new Size(111, 54);
+            btnSiparisIptal.Size = new Size(96, 54);
             btnSiparisIptal.TabIndex = 10;
             btnSiparisIptal.Text = "SIPARIS IPTAL";
             btnSiparisIptal.UseVisualStyleBackColor = false;
+            btnSiparisIptal.Click += btnSiparisIptal_Click;
             // 
             // btnOdemeAl
             // 
@@ -150,12 +201,13 @@
             btnOdemeAl.BackColor = Color.ForestGreen;
             btnOdemeAl.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnOdemeAl.ForeColor = Color.White;
-            btnOdemeAl.Location = new Point(526, 396);
+            btnOdemeAl.Location = new Point(540, 396);
             btnOdemeAl.Name = "btnOdemeAl";
-            btnOdemeAl.Size = new Size(112, 54);
+            btnOdemeAl.Size = new Size(98, 54);
             btnOdemeAl.TabIndex = 11;
             btnOdemeAl.Text = "ÖDEME AL";
             btnOdemeAl.UseVisualStyleBackColor = false;
+            btnOdemeAl.Click += btnOdemeAl_Click;
             // 
             // btnAnasayfayaDon
             // 
@@ -163,19 +215,20 @@
             btnAnasayfayaDon.BackColor = Color.Gold;
             btnAnasayfayaDon.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btnAnasayfayaDon.ForeColor = Color.Brown;
-            btnAnasayfayaDon.Location = new Point(409, 456);
+            btnAnasayfayaDon.Location = new Point(438, 456);
             btnAnasayfayaDon.Name = "btnAnasayfayaDon";
-            btnAnasayfayaDon.Size = new Size(229, 85);
+            btnAnasayfayaDon.Size = new Size(200, 85);
             btnAnasayfayaDon.TabIndex = 12;
             btnAnasayfayaDon.Text = "ANASAYFAYA DÖN";
             btnAnasayfayaDon.UseVisualStyleBackColor = false;
+            btnAnasayfayaDon.Click += btnAnasayfayaDon_Click;
             // 
             // label4
             // 
             label4.Anchor = AnchorStyles.Right;
-            label4.Location = new Point(409, 325);
+            label4.Location = new Point(438, 325);
             label4.Name = "label4";
-            label4.Size = new Size(111, 25);
+            label4.Size = new Size(82, 46);
             label4.TabIndex = 13;
             label4.Text = "Ödeme Tutari:";
             // 
@@ -195,9 +248,9 @@
             lblMasaNo.BackColor = Color.Tomato;
             lblMasaNo.Font = new Font("Segoe UI", 40F, FontStyle.Bold, GraphicsUnit.Point);
             lblMasaNo.ForeColor = Color.WhiteSmoke;
-            lblMasaNo.Location = new Point(411, 106);
+            lblMasaNo.Location = new Point(438, 106);
             lblMasaNo.Name = "lblMasaNo";
-            lblMasaNo.Size = new Size(227, 176);
+            lblMasaNo.Size = new Size(200, 176);
             lblMasaNo.TabIndex = 15;
             lblMasaNo.Text = "00";
             lblMasaNo.TextAlign = ContentAlignment.MiddleCenter;
@@ -219,7 +272,7 @@
             Controls.Add(nudAdet);
             Controls.Add(dgvDetaylar);
             Controls.Add(btnDetayEkle);
-            Controls.Add(cmbUrun);
+            Controls.Add(cboUrun);
             Controls.Add(label2);
             Controls.Add(label1);
             MinimumSize = new Size(600, 386);
@@ -235,7 +288,7 @@
 
         private Label label1;
         private Label label2;
-        private ComboBox cmbUrun;
+        private ComboBox cboUrun;
         private Button btnDetayEkle;
         private DataGridView dgvDetaylar;
         private NumericUpDown nudAdet;
@@ -248,5 +301,9 @@
         private Label label4;
         private Label lblOdemeTutari;
         private Label lblMasaNo;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

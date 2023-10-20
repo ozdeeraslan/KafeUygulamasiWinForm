@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AnaForm));
             menuStrip1 = new MenuStrip();
             tsmiUrunler = new ToolStripMenuItem();
             tsmiGecmisSiparisler = new ToolStripMenuItem();
             lvwMasalar = new ListView();
+            ilMasalar = new ImageList(components);
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -41,7 +44,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { tsmiUrunler, tsmiGecmisSiparisler });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(622, 28);
+            menuStrip1.Size = new Size(738, 28);
             menuStrip1.TabIndex = 0;
             menuStrip1.Text = "Ürünler";
             // 
@@ -56,21 +59,32 @@
             tsmiGecmisSiparisler.Name = "tsmiGecmisSiparisler";
             tsmiGecmisSiparisler.Size = new Size(136, 24);
             tsmiGecmisSiparisler.Text = "Gecmis Siparisler";
+            tsmiGecmisSiparisler.Click += tsmiGecmisSiparisler_Click;
             // 
             // lvwMasalar
             // 
             lvwMasalar.Dock = DockStyle.Fill;
+            lvwMasalar.LargeImageList = ilMasalar;
             lvwMasalar.Location = new Point(0, 28);
             lvwMasalar.Name = "lvwMasalar";
-            lvwMasalar.Size = new Size(622, 383);
+            lvwMasalar.Size = new Size(738, 540);
             lvwMasalar.TabIndex = 1;
             lvwMasalar.UseCompatibleStateImageBehavior = false;
+            lvwMasalar.DoubleClick += lvwMasalar_DoubleClick;
+            // 
+            // ilMasalar
+            // 
+            ilMasalar.ColorDepth = ColorDepth.Depth8Bit;
+            ilMasalar.ImageStream = (ImageListStreamer)resources.GetObject("ilMasalar.ImageStream");
+            ilMasalar.TransparentColor = Color.Transparent;
+            ilMasalar.Images.SetKeyName(0, "bos");
+            ilMasalar.Images.SetKeyName(1, "dolu");
             // 
             // AnaForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(622, 411);
+            ClientSize = new Size(738, 568);
             Controls.Add(lvwMasalar);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -89,5 +103,6 @@
         private ToolStripMenuItem tsmiUrunler;
         private ToolStripMenuItem tsmiGecmisSiparisler;
         private ListView lvwMasalar;
+        private ImageList ilMasalar;
     }
 }
